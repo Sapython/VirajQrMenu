@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fbms-shreeva-demo": {
+      "hosting": {
+        "VirajQrMenu": [
+          "viraj-qrmenu"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fbms-shreeva-demo"
+  }
+}
