@@ -33,19 +33,20 @@ export class CustomerDetailComponent implements OnInit {
     console.log(this.customerDetailForm.value);
     if (!this.showOrderDescription){
       localStorage.setItem('name',this.customerDetailForm.value.name);
-    localStorage.setItem('email',this.customerDetailForm.value.email);
-    localStorage.setItem('phone',this.customerDetailForm.value.phone);
-    localStorage.setItem('notes',this.customerDetailForm.value.notes);
-    localStorage.setItem('cartItems',this.cartItems.toString());
-    this.dataProvider.qrCustomerData = this.customerDetailForm.value;
-    if (this.customerDetailForm.valid){
-      this.router.navigate(['../qr/placed'])
-      this.showOrderDescription = true;
+      localStorage.setItem('email',this.customerDetailForm.value.email);
+      localStorage.setItem('phone',this.customerDetailForm.value.phone);
+      localStorage.setItem('notes',this.customerDetailForm.value.notes);
+      localStorage.setItem('cartItems',this.cartItems.toString());
+      localStorage.setItem('products',JSON.stringify(this.dataProvider.qrProducts))
+      this.dataProvider.qrCustomerData = this.customerDetailForm.value;
+      if (this.customerDetailForm.valid){
+        this.router.navigate([this.dataProvider.currentProjectId,'placed'],{queryParams:{table:this.dataProvider.currentTable}});
+        this.showOrderDescription = true;
+      } else {
+        this.alertify.presentToast('Please fill all the fields')
+      }
     } else {
-      this.alertify.presentToast('Please fill all the fields')
-    }
-    } else {
-      this.router.navigate(['../qr/placed'])
+      this.router.navigate([this.dataProvider.currentProjectId,'placed'],{queryParams:{table:this.dataProvider.currentTable}});
     }
   }
 

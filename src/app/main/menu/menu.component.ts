@@ -27,8 +27,9 @@ export class MenuComponent implements OnInit {
         this.categories.filter(
           (category: any) => category.id == doc.data().categories?.id
         ).length == 0
-          ? this.categories.push(doc.data().categories)
+          ? (doc.data().categories ? this.categories.push(doc.data().categories) : {})
           : null;
+        console.log(doc.data().categories)
     })
   }
 

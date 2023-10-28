@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "target": "VirajQrMenu",
+    "site": "viraj-qrmenu",
     "public": "dist/viraj-qr-menu",
     "ignore": [
       "**/.*"
