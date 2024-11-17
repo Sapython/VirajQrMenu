@@ -1,0 +1,13 @@
+<div class="toolbar">
+    <img class="headerImg" [src]="this.dataProvider.qrSettings?.logo" alt="">
+    <div class="headerBody">
+        <h1>{{this.dataProvider.qrSettings?.pageTitle | titlecase}}</h1>
+        <h3>{{this.dataProvider.qrSettings?.pageSubtitle | titlecase}}</h3>
+        <div class="time">
+            <span class="open">Open Now</span>
+            <span class="openTime"> {{this.dataProvider.qrSettings?.startTime}} - {{this.dataProvider.qrSettings?.endTime}} (Today)</span>
+        </div>
+        <p *ngIf="this.dataProvider.qrSettings?.tableNo">Table No: {{this.dataProvider.qrSettings?.tableNo}}</p>
+    </div>
+</div>
+<router-outlet></router-outlet>

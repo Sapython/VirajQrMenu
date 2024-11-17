@@ -1,0 +1,23 @@
+<img class="bg" src="assets/qrMenu/background.jpg" alt="">
+<div class="center">
+    <p class="itemsIncart"><span>{{cartItems}}</span> Items in cart</p>
+    <div class="cardOuter" *ngFor="let product of dataProvider.qrProducts">
+        <div class="card">
+            <img class="cardImg" [src]="product.images[0]" alt="">
+            <div class="cardBody">
+                <div class="cardTitle">{{product?.dishName}}</div>
+                <div class="cardPriceTitle">Qty: {{product?.quantity || 1}}</div>
+                <div class="cardPriceTitle">₹ {{product?.onlinePrice}}</div>
+            </div>
+        </div>
+        <button class="button" (click)="removeFromCart(product)"><mat-icon>remove</mat-icon></button>
+    </div>
+    <form [formGroup]="customerDetailForm" (ngSubmit)="confirmOrder()">
+        <input matInput type="text" formControlName="name" name="name" placeholder="Name" #name>
+        <input matInput type="text" formControlName="email" name="email" placeholder="Email" #email>
+        <input matInput type="text" formControlName="phone" name="phone" placeholder="Phone" #phone>
+        <input matInput type="text" formControlName="notes" name="notes" placeholder="Notes" #notes>
+        <button>Confirm Order For &#8377;{{this.finalSum}}</button>
+        <p>*Orders issued here cannot be cancelled.</p>
+    </form>
+</div>
